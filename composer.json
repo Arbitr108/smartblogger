@@ -1,7 +1,6 @@
 {
-"name": "dev.smartdeveloper.ru",
-"description":"testing minimal usefull php environment for a php projects",
-"min-stability":"stable",
+  "name": "smartdeveloper",
+  "description":"testing minimal usefull php environment for a php projects",
     "require": {
         "monolog/monolog": "^1.22"
     },
@@ -11,7 +10,8 @@
 "autoload": {
         "psr-4": { 
 			"App\\": "app/",
-			"": "classes/"
+			"Classes\\": "classes/"
         }
-    }
+    },
+  "minimum-stability":"stable"
 }

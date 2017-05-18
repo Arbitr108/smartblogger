@@ -1,8 +1,5 @@
 <?php
-use Application\Smart;
 
-echo "initializing and creating Application step...\n";
-	
+use Classes\Application\Smart;
+
 $smartApp = new Smart();
-
-return $smartApp;
