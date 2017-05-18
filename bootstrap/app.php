@@ -1,5 +1,5 @@
 <?php
-use Application\Smart\Smart;
+use Application\Smart;
 
 echo "initializing and creating Application step...\n";
 	
