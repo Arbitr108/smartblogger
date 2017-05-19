@@ -1,6 +1,9 @@
 <?php
 use SmartBlogger\Application\PluginRegistry;
 use SmartBlogger\Application\Request;
+use SmartBlogger\Application\Router;
+use SmartBlogger\Application\SmartBlogger;
+use SmartBlogger\Presenter\PresenterFactory;
 use SmartBlogger\Storage\StorageFactory;
 
 $config = require_once "../config/config.php";
@@ -9,17 +12,19 @@ $dotenv = new Dotenv\Dotenv("../", ".settings");
 
 $dotenv->load();
 
-
-Request::hydrate();
-
-
-//register plugins
 PluginRegistry::set(PluginRegistry::STORAGE, StorageFactory::make($config['storage']));
-PluginRegistry::set(PluginRegistry::PRESENTER, StorageFactory::make($config['presenter']));
+PluginRegistry::set(PluginRegistry::PRESENTER, PresenterFactory::make($config['presenter']));
 
 $db = PluginRegistry::get(PluginRegistry::STORAGE);
-//var_dump($db);
 
+require_once "app.php";
 
+$routes = require_once "../config/routes.php";
 
+Router::registerRoutes($routes);
 
+$action = Router::handle(Request::hydrate());
+
+SmartBlogger::handleAction($action);
+
+SmartBlogger::respond();

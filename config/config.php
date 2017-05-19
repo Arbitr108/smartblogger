@@ -7,5 +7,5 @@
  */
 return [
 	"storage" => 'MysqlStorage',
-	"presenter" => 'Ui\View\ViewPresenter'
+	"presenter" => 'Ui\PresenterAdapter'
 ];

@@ -3,13 +3,13 @@
  * Created by Pavel Gorbatyuk.
  * Email: spec4web@gmail.com
  * Date: 19.05.2017
- * Time: 12:06
+ * Time: 15:00
  */
 
-namespace Ui\Controller;
+namespace SmartBlogger\Controller;
 
 
-class LoginController extends BaseController
+class BaseController
 {
 
 }

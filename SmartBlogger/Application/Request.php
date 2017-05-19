@@ -13,48 +13,68 @@ class Request
 {
 	private static $_server;
 	private static $_query;
+	private static $_post;
 
 	public static function hydrate(){
-
-		self::setServer($_SERVER['REQUEST_URI']);
+		self::setServer($_SERVER);
 		self::setQuery($_SERVER['QUERY_STRING']);
+		self::setPost($_POST);
+		return new static();
 	}
 
-	/**
-	 * @return mixed
-	 */
-	public static function getServer()
+	public static function get($key, $default = null)
 	{
-		return self::$_server;
+		if(!empty($_REQUEST[$key]))
+			return $_REQUEST[$key];
+		else
+			return $default;
 	}
 
-	/**
-	 * @param mixed $server
-	 */
-	public static function setServer($server)
-	{
+	public static function server($key, $default = null){
+		if(!empty(self::$_server[$key]))
+			return self::$_server[$key];
+		else
+			return $default;
+	}
+
+	public static function query(){
+		if(!empty(self::$_query))
+			return self::$_query;
+		else
+			return null;
+	}
+
+	public static function uri(){
+		return trim(self::$_server['REQUEST_URI']);
+	}
+
+	public static function all(){
+		return $_REQUEST;
+	}
+
+	public static function method(){
+		return $_SERVER['REQUEST_METHOD'];
+	}
+
+	public static function isPost(){
+		return $_SERVER['REQUEST_METHOD'] == "POST";
+	}
+
+	public static function postParam($key, $default = null){
+		return isset(self::$_post[$key]) ? self::$_post[$key] : $default;
+	}
+
+	public static function setPost($post){
+		self::$_post = $post;
+	}
+
+
+	public static function setServer($server){
 		self::$_server = $server;
 	}
 
-	/**
-	 * @return mixed
-	 */
-	public static function getQuery()
-	{
-		return self::$_query;
-	}
-
-	/**
-	 * @param mixed $query
-	 */
-	public static function setQuery($query)
-	{
+	public static function setQuery($query){
 		self::$_query = $query;
 	}
-
-
-
-
-
 
 }

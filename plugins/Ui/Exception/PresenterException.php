@@ -3,13 +3,13 @@
  * Created by Pavel Gorbatyuk.
  * Email: spec4web@gmail.com
  * Date: 19.05.2017
- * Time: 12:07
+ * Time: 15:34
  */
 
-namespace Ui\Controller;
+namespace Ui\Exception;
 
 
-class ArticleController extends BaseController
+class PresenterException extends \Exception
 {
 
 }

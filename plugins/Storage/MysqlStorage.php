@@ -51,7 +51,7 @@ class MysqlStorage implements StorageInterface
 		return $this->_connection;
 	}
 
-	public function prepareQuery($sql, Array $bindings = []){
+	public function prepareQuery($sql, $bindings = []){
 		$this->_sql = $sql;
 		$this->_bindings = $bindings;
 		$this->_prepareStatement();

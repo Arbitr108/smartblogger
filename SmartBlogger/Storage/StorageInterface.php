@@ -11,5 +11,6 @@ namespace SmartBlogger\Storage;
 
 interface StorageInterface
 {
+	function prepareQuery($sql, $arguments);
 	function executeQuery();
 }
