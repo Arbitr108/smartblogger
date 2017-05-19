@@ -6,6 +6,8 @@ use SmartBlogger\Application\SmartBlogger;
 use SmartBlogger\Presenter\PresenterFactory;
 use SmartBlogger\Storage\StorageFactory;
 
+const BASE_DIR = __DIR__."/..";
+
 $config = require_once "../config/config.php";
 
 $dotenv = new Dotenv\Dotenv("../", ".settings");
@@ -14,10 +16,6 @@ $dotenv->load();
 
 PluginRegistry::set(PluginRegistry::STORAGE, StorageFactory::make($config['storage']));
 PluginRegistry::set(PluginRegistry::PRESENTER, PresenterFactory::make($config['presenter']));
-
-$db = PluginRegistry::get(PluginRegistry::STORAGE);
-
-require_once "app.php";
 
 $routes = require_once "../config/routes.php";
 
