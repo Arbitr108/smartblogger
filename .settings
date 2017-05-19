@@ -1,4 +1,6 @@
+
 DB_NAME=dev.smartdeveloper
 DB_HOST=localhost
+DB_PORT=3306
 DB_USER=smartdeveloper
 DB_PASSWORD=1Bn7imTK3c
